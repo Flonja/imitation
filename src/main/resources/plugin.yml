@@ -1,0 +1,4 @@
+name: imitation
+version: '${version}'
+main: tech.flonja.imitation.Imitation
+api-version: '1.20'

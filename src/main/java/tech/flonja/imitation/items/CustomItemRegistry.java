@@ -47,6 +47,7 @@ public class CustomItemRegistry {
 
         ItemStack itemStack = new ItemStack(customItem.getMaterial(), 1);
         itemStack.setItemMeta(Bukkit.getServer().getItemFactory().getItemMeta(customItem.getMaterial()));
+        itemStack.getItemMeta().setDisplayName(customItem.getRarity().getColor() + customItem.getName());
         itemStack.getItemMeta().setLore(this.generateLore(customItem));
         itemStack.getItemMeta().getPersistentDataContainer().set(Imitation.ID, PersistentDataType.STRING, key.toString());
 
@@ -73,7 +74,7 @@ public class CustomItemRegistry {
             }
         }
 
-        lore.add(customItem.getRarity().getDisplayName());
+        lore.add(customItem.getRarity().getColor() + ChatColor.BOLD + customItem.getRarity().getDisplayName());
         return lore;
     }
 }

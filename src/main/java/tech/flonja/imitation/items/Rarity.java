@@ -7,9 +7,14 @@ import org.bukkit.ChatColor;
 @Getter
 @RequiredArgsConstructor
 public enum Rarity {
-    COMMON(ChatColor.WHITE + ChatColor.BOLD.toString() + "UNCOMMON"),
-    UNCOMMON(ChatColor.GREEN + ChatColor.BOLD.toString() + "UNCOMMON"),
-    ADMIN(ChatColor.RED + ChatColor.BOLD.toString() + "ADMIN");
+    COMMON(ChatColor.BOLD + "UNCOMMON", ChatColor.WHITE),
+    UNCOMMON(ChatColor.BOLD + "UNCOMMON", ChatColor.GREEN),
+    ADMIN(ChatColor.BOLD + "ADMIN", ChatColor.RED);
 
     private final String displayName;
+    private final ChatColor color;
+
+    public String getColor() {
+        return color.toString();
+    }
 }

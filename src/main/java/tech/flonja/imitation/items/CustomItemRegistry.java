@@ -72,7 +72,7 @@ public class CustomItemRegistry {
                 if(actionName == null) continue;
                 lore.add(ChatColor.GOLD + "Ability (" + actionName + "): " + ability.getName());
                 for(String line : ability.getDescription().split("\n")) {
-                    lore.add("  " + line);
+                    lore.add(ChatColor.WHITE + "  " + line);
                 }
                 lore.add(ChatColor.BLACK.toString());
             }

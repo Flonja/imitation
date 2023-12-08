@@ -6,6 +6,7 @@ import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
 import org.bukkit.event.block.Action;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataType;
 import tech.flonja.imitation.Imitation;
 import tech.flonja.imitation.items.abilities.Ability;
@@ -46,10 +47,13 @@ public class CustomItemRegistry {
                 .findFirst().orElseThrow().getKey();
 
         ItemStack itemStack = new ItemStack(customItem.getMaterial(), 1);
-        itemStack.setItemMeta(Bukkit.getServer().getItemFactory().getItemMeta(customItem.getMaterial()));
-        itemStack.getItemMeta().setDisplayName(customItem.getRarity().getColor() + customItem.getName());
-        itemStack.getItemMeta().setLore(this.generateLore(customItem));
-        itemStack.getItemMeta().getPersistentDataContainer().set(Imitation.ID, PersistentDataType.STRING, key.toString());
+        ItemMeta meta = Bukkit.getServer().getItemFactory().getItemMeta(customItem.getMaterial());
+        if(meta == null) return null;
+
+        meta.setDisplayName(customItem.getRarity().getColor() + customItem.getName());
+        meta.setLore(this.generateLore(customItem));
+        meta.getPersistentDataContainer().set(Imitation.ID, PersistentDataType.STRING, key.toString());
+        itemStack.setItemMeta(meta);
 
         return itemStack;
     }

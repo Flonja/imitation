@@ -18,6 +18,6 @@ public class Bomb implements Ability {
 
     @Override
     public void onUse(Player player) {
-        player.getWorld().createExplosion(player.getLocation(), 10F, true, true, (Entity) this);
+        player.getWorld().createExplosion(player.getLocation(), 10F, true, true, player);
     }
 }
